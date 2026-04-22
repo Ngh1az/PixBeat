@@ -16,6 +16,7 @@ export const LyricsPanel = memo(function LyricsPanel({
   trackTitle,
   expanded = false,
 }: LyricsPanelProps) {
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const lineRefs = useRef<Array<HTMLParagraphElement | null>>([]);
 
   const activeLineIndex = useMemo(() => {
@@ -31,9 +32,21 @@ export const LyricsPanel = memo(function LyricsPanel({
   useEffect(() => {
     if (!isPlaying || activeLineIndex < 0) return;
 
+    const scrollContainer = scrollContainerRef.current;
     const activeNode = lineRefs.current[activeLineIndex];
-    activeNode?.scrollIntoView({
-      block: "center",
+    if (!scrollContainer || !activeNode) return;
+
+    const targetTop =
+      activeNode.offsetTop -
+      scrollContainer.clientHeight / 2 +
+      activeNode.clientHeight / 2;
+    const maxTop = Math.max(
+      0,
+      scrollContainer.scrollHeight - scrollContainer.clientHeight,
+    );
+
+    scrollContainer.scrollTo({
+      top: Math.max(0, Math.min(targetTop, maxTop)),
       behavior: "smooth",
     });
   }, [activeLineIndex, isPlaying]);
@@ -53,6 +66,7 @@ export const LyricsPanel = memo(function LyricsPanel({
     <div className="pixel-border border-neon-cyan bg-panel p-3 sm:h-full sm:flex sm:flex-col">
       <p className="mb-2 text-[10px] text-neon-magenta">LYRICS</p>
       <div
+        ref={scrollContainerRef}
         className={`pixel-scrollbar space-y-2 overflow-y-auto pr-1 ${expanded ? "max-h-52 sm:max-h-none sm:flex-1 sm:min-h-0" : "max-h-52 sm:max-h-72"}`}
       >
         {lines.map((line, index) => {
