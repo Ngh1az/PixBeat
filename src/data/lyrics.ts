@@ -37,7 +37,40 @@ const stayLyrics: LyricLine[] = [
   { time: 138, text: "I know that I can't find nobody else as good as you" },
   { time: 141, text: "I need you to stay, need you to stay" },
 ];
+const threeStrikesLyrics: LyricLine[] = [
+  { time: 0, text: "" },
+  { time: 12, text: "Don me (ain't) -don me (yeah) -don me" },
+  { time: 15, text: "Don me, called on me, called on me" },
+  { time: 18, text: "Don me (ain't) -don me (yeah) -don me" },
+  { time: 21, text: "Don me, called on me, called on me" },
+  { time: 24, text: "Doing like ninety-five on the interstate" },
+  { time: 28, text: "Looking for a dinner plate" },
+  { time: 31, text: "I'm hungry, you called me" },
+  { time: 34, text: "To say you got something, and it's all me" },
+  { time: 36, text: "Can you hold me" },
+  { time: 39, text: "Down for one night, like I got three strikes?" },
+  { time: 42, text: "Need you to free me" },
+  { time: 46, text: "It's a prison inside my mind" },
+  { time: 48, text: "Break me, taste me" },
+  { time: 52, text: "Roll me up like the northern lights" },
+  { time: 55, text: "Can you hold me" },
+  { time: 57, text: "Down for one night, like I got three strikes?" },
+  { time: 60, text: "Don me (ain't) -don me (yeah) -don me" },
+  { time: 62, text: "Don me, called on me, called on me" },
+  { time: 65, text: "Don me (ain't) -don me (yeah) -don me" },
+  { time: 68, text: "Don me, called on me, (like I got three strikes) called on me" },
+  { time: 72, text: "Don me (ain't) -don me (yeah) -don me" },
+  { time: 75, text: "Don me, called on me, called on me" },
+  { time: 78, text: "Don me (ain't) -don me (yeah) -don me" },
+  { time: 81, text: "Don me, called on me, (like I got three strikes) called on me" },
+  { time: 84, text: "Lit up, burnt out" },
+  { time: 87, text: "Closer to God than we've ever been now" },
+  { time: 90, text: "Sipping slow, talking loud" },
+  { time: 94, text: "Enough soul, we could sell out" },
+]
+
 
 export const lyricsByTrackId: Record<string, LyricLine[]> = {
   stay: stayLyrics,
+  "3-strikes": threeStrikesLyrics,
 };
