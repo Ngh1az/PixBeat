@@ -7,6 +7,8 @@ import {
   Shuffle,
   Repeat,
   LoaderCircle,
+  PictureInPicture2,
+  PictureInPicture,
 } from "lucide-react";
 import { playHoverClick } from "../lib/sfx";
 import type { LoopMode } from "../types/player";
@@ -25,6 +27,9 @@ type PlaybackControlsProps = {
   onVolume: (value: number) => void;
   onToggleShuffle: () => void;
   onToggleLoop: () => void;
+  floatingEnabled: boolean;
+  floatingSupported: boolean;
+  onToggleFloating: () => void;
 };
 
 export const PlaybackControls = memo(function PlaybackControls({
@@ -39,6 +44,9 @@ export const PlaybackControls = memo(function PlaybackControls({
   onVolume,
   onToggleShuffle,
   onToggleLoop,
+  floatingEnabled,
+  floatingSupported,
+  onToggleFloating,
 }: PlaybackControlsProps) {
   const playSfx = useCallback(() => {
     playHoverClick();
@@ -106,9 +114,34 @@ export const PlaybackControls = memo(function PlaybackControls({
       </div>
 
       <div className="space-y-3">
-        <p className="text-xs text-neon-cyan">
-          VOLUME {Math.round(volume * 100)}%
-        </p>
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-xs text-neon-cyan">
+            VOLUME {Math.round(volume * 100)}%
+          </p>
+
+          <PixelButton
+            onMouseEnter={playSfx}
+            onClick={onToggleFloating}
+            active={floatingEnabled}
+            disabled={!floatingSupported}
+            size="sm"
+            className="h-8 px-2 text-[9px]"
+            title={
+              floatingSupported
+                ? floatingEnabled
+                  ? "Tat trinh phat noi"
+                  : "Bat trinh phat noi"
+                : "Trinh duyet nay khong ho tro trinh phat noi"
+            }
+          >
+            {floatingEnabled ? (
+              <PictureInPicture className="mr-1 h-3.5 w-3.5" />
+            ) : (
+              <PictureInPicture2 className="mr-1 h-3.5 w-3.5" />
+            )}
+            FLOAT
+          </PixelButton>
+        </div>
         <PixelSlider
           min={0}
           max={1}

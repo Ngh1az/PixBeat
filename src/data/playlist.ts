@@ -11,6 +11,7 @@ import oneOfTheGirlsMp3 from "../assets/music/The Weeknd, JENNIE & Lily Rose Dep
 import timelessMp3 from "../assets/music/The Weeknd, Playboi Carti - Timeless (Official Lyric Video) - (320 Kbps).mp3";
 import istheresomeoneelseMp3 from "../assets/music/is-there-someone-else.mp3";
 import myjealousyMp3 from "../assets/music/vivi baby & ovg! - MY JEALOUSY (Slowed) - (320 Kbps).mp3";
+import ireallywanttostayatyourhouseMp3 from "../assets/music/Cyberpunk_ Edgerunners - I Really Want To Stay At Your House (80s REMIX) - (320 Kbps).mp3";
 
 import stayCover from "../assets/images/covers/1695164249576_300.jpg";
 import strikesCover from "../assets/images/covers/3 strikes.jpg";
@@ -23,6 +24,7 @@ import oneOfTheGirlsCover from "../assets/images/covers/the idol.jpg";
 import timelessCover from "../assets/images/covers/timeless.jpg";
 import istheresomeoneelseCover from "../assets/images/covers/0.jpg";
 import myjealousyCover from "../assets/images/covers/myjealousy.jpg";
+import ireallywanttostayatyourhouseCover from "../assets/images/covers/I Really Want To Stay At Your House .jpg";
 
 export const playlistData: Track[] = [
   {
@@ -112,5 +114,13 @@ export const playlistData: Track[] = [
     src: myjealousyMp3,
     cover: myjealousyCover,
     bpm: 120,
+  },
+  {
+    id: "i-really-want-to-stay-at-your-house",
+    title: "I Really Want To Stay At Your House",
+    artist: "Cyberpunk Edgerunners",
+    src: ireallywanttostayatyourhouseMp3,
+    cover: ireallywanttostayatyourhouseCover,
+    bpm: 110,
   },
 ];
