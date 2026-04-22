@@ -18,6 +18,8 @@ export const LyricsPanel = memo(function LyricsPanel({
 }: LyricsPanelProps) {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const lineRefs = useRef<Array<HTMLParagraphElement | null>>([]);
+  const lastAutoScrolledIndexRef = useRef(-1);
+  const wasContainerVisibleRef = useRef(false);
 
   const activeLineIndex = useMemo(() => {
     if (lines.length === 0) return -1;
@@ -30,16 +32,43 @@ export const LyricsPanel = memo(function LyricsPanel({
   }, [currentTime, lines]);
 
   useEffect(() => {
+    // Reset scroll bookkeeping when switching tracks/lyric sets.
+    lastAutoScrolledIndexRef.current = -1;
+    wasContainerVisibleRef.current = false;
+  }, [lines]);
+
+  useEffect(() => {
     if (!isPlaying || activeLineIndex < 0) return;
 
     const scrollContainer = scrollContainerRef.current;
     const activeNode = lineRefs.current[activeLineIndex];
     if (!scrollContainer || !activeNode) return;
 
-    const targetTop =
-      activeNode.offsetTop -
-      scrollContainer.clientHeight / 2 +
-      activeNode.clientHeight / 2;
+    const isContainerVisible = scrollContainer.clientHeight > 0;
+    if (!isContainerVisible) {
+      wasContainerVisibleRef.current = false;
+      return;
+    }
+
+    const becameVisible = !wasContainerVisibleRef.current;
+    wasContainerVisibleRef.current = true;
+
+    if (
+      lastAutoScrolledIndexRef.current === activeLineIndex &&
+      !becameVisible
+    ) {
+      return;
+    }
+
+    const containerRect = scrollContainer.getBoundingClientRect();
+    const activeRect = activeNode.getBoundingClientRect();
+    const activeCenterTop =
+      activeRect.top -
+      containerRect.top +
+      scrollContainer.scrollTop +
+      activeRect.height / 2;
+
+    const targetTop = activeCenterTop - scrollContainer.clientHeight / 2;
     const maxTop = Math.max(
       0,
       scrollContainer.scrollHeight - scrollContainer.clientHeight,
@@ -49,7 +78,9 @@ export const LyricsPanel = memo(function LyricsPanel({
       top: Math.max(0, Math.min(targetTop, maxTop)),
       behavior: "smooth",
     });
-  }, [activeLineIndex, isPlaying]);
+
+    lastAutoScrolledIndexRef.current = activeLineIndex;
+  }, [activeLineIndex, currentTime, isPlaying]);
 
   if (lines.length === 0) {
     return (
