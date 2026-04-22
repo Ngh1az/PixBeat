@@ -1,0 +1,43 @@
+import type { LyricLine } from "../types/player";
+
+const stayLyrics: LyricLine[] = [
+  { time: 0, text: "" },
+  { time: 31, text: "I do the same thing I told you that I never would" },
+  { time: 33, text: "I told you I'd change, even when I knew I never could" },
+  { time: 37, text: "I know that I can't find nobody else as good as you" },
+  { time: 39, text: "I need you to stay, need you to stay" },
+  { time: 42, text: "I get drunk, wake up, I'm wasted still" },
+  { time: 45, text: "I realize the time that I wasted here" },
+  { time: 48, text: "I feel like you can't feel the way I feel" },
+  //   { time: 50, text: "I'll be fucked up if you can't be right here" },
+  { time: 62, text: "I'll be fucked up if you can't be right here" },
+  { time: 65, text: "I do the same thing I told you that I never would" },
+  { time: 67, text: "I told you I'd change, even when I knew I never could" },
+  { time: 70, text: "I know that I can't find nobody else as good as you" },
+  { time: 73, text: "I need you to stay, need you to stay" },
+  { time: 76, text: "I do the same thing I told you that I never would" },
+  { time: 79, text: "I told you I'd change, even when I knew I never could" },
+  { time: 81, text: "I know that I can't find nobody else as good as you" },
+  { time: 84, text: "I need you to stay, need you to stay" },
+  { time: 87, text: "When I'm away from you, I miss your touch" },
+  { time: 90, text: "You're the reason I believe in love" },
+  { time: 93, text: "It's been difficult for me to trust" },
+  { time: 96, text: "And I'm afraid that I'ma mess it up" },
+  { time: 98, text: "Ain't no way that I can leave you stranded" },
+  { time: 101, text: "Cause you ain't ever left me empty-handed" },
+  { time: 104, text: "And you know that I know that I can't live without you" },
+  { time: 108, text: "So baby, stay" },
+  { time: 118, text: "I'll be fucked up if you can't be right here" },
+  { time: 121, text: "I do the same thing I told you that I never would" },
+  { time: 124, text: "I told you I'd change, even when I knew I never could" },
+  { time: 127, text: "I know that I can't find nobody else as good as you" },
+  { time: 130, text: "I need you to stay, need you to stay" },
+  { time: 133, text: "I do the same thing I told you that I never would" },
+  { time: 135, text: "I told you I'd change, even when I knew I never could" },
+  { time: 138, text: "I know that I can't find nobody else as good as you" },
+  { time: 141, text: "I need you to stay, need you to stay" },
+];
+
+export const lyricsByTrackId: Record<string, LyricLine[]> = {
+  stay: stayLyrics,
+};
