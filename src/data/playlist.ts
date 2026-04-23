@@ -12,6 +12,7 @@ import timelessMp3 from "../assets/music/The Weeknd, Playboi Carti - Timeless (O
 import istheresomeoneelseMp3 from "../assets/music/is-there-someone-else.mp3";
 import myjealousyMp3 from "../assets/music/vivi baby & ovg! - MY JEALOUSY (Slowed) - (320 Kbps).mp3";
 import ireallywanttostayatyourhouseMp3 from "../assets/music/Cyberpunk_ Edgerunners - I Really Want To Stay At Your House (80s REMIX) - (320 Kbps).mp3";
+import jealousyMp3 from "../assets/music/jealousy_audio.mp3";
 
 import stayCover from "../assets/images/covers/1695164249576_300.jpg";
 import strikesCover from "../assets/images/covers/3 strikes.jpg";
@@ -25,6 +26,7 @@ import timelessCover from "../assets/images/covers/timeless.jpg";
 import istheresomeoneelseCover from "../assets/images/covers/0.jpg";
 import myjealousyCover from "../assets/images/covers/myjealousy.jpg";
 import ireallywanttostayatyourhouseCover from "../assets/images/covers/I Really Want To Stay At Your House .jpg";
+import jealousyCover from "../assets/images/covers/aefc3da7fd558b91a89b49f990857347.jpg"; 
 
 export const playlistData: Track[] = [
   {
@@ -50,6 +52,14 @@ export const playlistData: Track[] = [
     src: harleysMp3,
     cover: harleysCover,
     bpm: 96,
+  },
+  {
+    id: "jealousy",
+    title: "My Jealousy",
+    artist: "3rd coast",
+    src: jealousyMp3,
+    cover: jealousyCover,
+    bpm: 116,
   },
   {
     id: "just-the-way-you-are",
